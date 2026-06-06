@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 create_jira_issue.py --type Epic --project SCRUM --summary 'Enable peer-to-peer payment transfers between users' --description ' *)"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+name: Create Jira Ticket on PR
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  create-ticket:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Jira Issue
+        uses: bryannice/gitactions-jira-issue-creation@master
+        env:
+          JIRA_ACCOUNT_URL: https://tomarlearning11.atlassian.net/rest/api/3/issue
+          JIRA_USERNAME: ${{ secrets.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_PROJECT: SCRUM  # Replace with your Jira Project Key
+          JIRA_ISSUE_TYPE: Task
+          JIRA_ISSUE_SUMMARY: "PR Opened: ${{ github.event.pull_request.title }}"
+          JIRA_ISSUE_DESCRIPTION: "Review the pull request here: ${{ github.event.pull_request.html_url }}"
